@@ -125,7 +125,7 @@ int main(void)
   HAL_UART_Receive_IT(&huart1, &rx_data, 1);
   HAL_TIM_Base_Start(&htim2);
   lcd_init();
- // Set_Time (15, 18, 15, 03, 03, 6, 1976);
+ // Set_Time (15, 18, 15, 03, 03, 6, 1976); //Set time RTC khi lần đầu cấu hình hệ thống
   /* USER CODE END 2 */
 
   /* Create the semaphores(s) */
@@ -387,12 +387,12 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
 //Hàm ngắt khi có tín hiệu nút nhấn
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
 	if(GPIO_Pin == GPIO_PIN_1)
 	{
-	//	for(int i = 500000; i>0; i--);
 		__HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_1);
 		HAL_NVIC_ClearPendingIRQ(EXTI0_IRQn);
 		mnt = !mnt;
@@ -403,7 +403,6 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 
 	if(GPIO_Pin == GPIO_PIN_12)
 	{
-	//	for(int i = 500000; i>0; i--);
 		__HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_12);
 		HAL_NVIC_ClearPendingIRQ(EXTI0_IRQn);
 		pb12 = !pb12;
@@ -411,7 +410,6 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 
 	if(GPIO_Pin == GPIO_PIN_13)
 	{
-	//	for(int i = 500000; i>0; i--);
 		__HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_13);
 		HAL_NVIC_ClearPendingIRQ(EXTI0_IRQn);
 		pb13 = !pb13;
@@ -452,7 +450,7 @@ void StartSensorTask(void const * argument)
   for(;;)
   {
 	  osSemaphoreWait(myBinarySemHandle, osWaitForever);
-	 // HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, 1); //CÁI NÀY LÀ ĐỂ KHI NẠP CODE NHẬN BIẾT CÓ CHẠY VÀO TASK HAY CHƯA
+	 // HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, 1); //Debug line, xem mcu có chạy vào task hay chưa
 
 	  //DHT11
 	    DHT11_Start();
@@ -488,7 +486,7 @@ void StartCheckTask(void const * argument)
   for(;;)
   {
 	  osSemaphoreWait(myBinarySemHandle, osWaitForever);
-	 //	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, 1); //CÁI NÀY LÀ ĐỂ KHI NẠP CODE NHẬN BIẾT CÓ CHẠY VÀO TASK HAY CHƯA
+	 //	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, 1); //Debug line, xem mcu có chạy vào task hay chưa
 		  Get_Time(&sec,&min,&hour,&day,&date,&month,&year);
 		  sprintf (buffer, "%02d:%02d", hour, min);
 		  lcd_put_cur (0,0);
