@@ -6,9 +6,7 @@
 #include "bh1750.h"
 //Biến cho RTC
 char buffer[15];
-
-//TIME mam;
- uint8_t  sec,min,hour,day,date,month,year;
+uint8_t  sec,min,hour,day,date,month,year;
 
 //biến cho độ ẩm đất
 uint32_t var = 0;
@@ -17,10 +15,10 @@ float output_var = 0;
 float moisture = 0;
 float voltage = 0;
 
-//biến as
+//biến cường độ ánh sáng
 float Lux = 0;
 
-//biến cho sky mưa
+//biến xác định khi trời mưa
  int rain; //mặc định là không mưa
  int SW_Motor = 1;
  int SW_Light = 1;
@@ -128,7 +126,7 @@ void WateringMachineUpdate(void){
 	 	  Display_Temp(Temperature);
 	 	  Display_Rh(Humidity);
 
-		  //DS3231 đ�?c
+		  //DS3231
 		  Get_Time(&sec,&min,&hour,&day,&date,&month,&year);
 		  sprintf (buffer, "%02d:%02d:%02d", hour, min, sec);
 		  lcd_put_cur (0,0);
