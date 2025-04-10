@@ -1,4 +1,4 @@
-This project utilizes two different approaches: a State Machine with Interrupt-event driven, and a FreeRTOS task-driven model using counting semaphores to implement a smart garden care system. The main microcontroller used is the STM32F103, and the primary gateway is the ESP32. You can explore each section in more detail to understand the system architecture and programming methods applied.
+This project utilizes two different approaches: a State Machine with Interrupt-event driven, and a FreeRTOS task-driven model using counting semaphores to implement a smart garden care system. The main microcontroller used is the STM32F103, and the primary gateway is the ESP32. In addition, the data can be viewed remotely by the user and the relays are controlled by the user via ThinkSpeak. You can explore each section in more detail to understand the system architecture and programming methods applied.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
