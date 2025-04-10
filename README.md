@@ -10,7 +10,7 @@ In addition, the team has designed a 2-layer PCB for the entire system. The hard
 * 2 relays for device control
 
 ############### TOP LAYER ##################
-
+![3D View](PCB/Top_Layer.png)
 ############### BOTTOM LAYER ##################
 
 ############### 3D VIEW ##################
